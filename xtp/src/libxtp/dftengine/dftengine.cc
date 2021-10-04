@@ -389,7 +389,10 @@ bool DFTEngine::EvaluateActiveRegion(Orbitals& orb) {
   overlap.Fill(aobasis);
 
   Index all_electrons = static_cast<Index>(
-      FullDensityMatrix.cwiseProduct(overlap.Matrix()).sum());
+      std::round(FullDensityMatrix.cwiseProduct(overlap.Matrix()).sum()));
+
+  std::cout << std::fixed <<  std::setprecision(15) << FullDensityMatrix.cwiseProduct(overlap.Matrix()).sum() << std::endl;
+
 
   Index active_electrons = static_cast<Index>(
       InitialActiveDensityMatrix.cwiseProduct(overlap.Matrix()).sum());
