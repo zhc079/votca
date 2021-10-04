@@ -57,8 +57,10 @@ std::array<Eigen::MatrixXd, 2> ActiveDensityMatrix::activedensitymatrix(
         active_mo_coeff.conservativeResize(localized_mo_coeff.rows(),
                                            counter + 1);
         active_mo_coeff.col(counter) = localized_mo_coeff.col(i);
-        localized_mo_coeff.col(i).setZero();
         counter++;
+        break;
+        //localized_mo_coeff.col(i).setZero();
+        
       }
       start += numfuncpatom[atom_id];
     }
